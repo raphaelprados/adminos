@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+          crossorigin="anonymous">
+    <title>Aparelhos cadastrados</title>
+</head>
+<body>
+    <div class="container">
+        <%- include('../partials/navbar') %>
+        <h3>Aparelhos cadastrados</h3>
+        <a href="/aparelho/cadastro" class="btn btn-primary">Novo Cadastro</a>
+        <table class="table">    
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% aparelhos.forEach(function(aparelho) { %>
+                    <tr>
+                        <th><%= aparelho.id %></th>
+                        <td><%= aparelho.tipo %></td>
+                        <td><%= aparelho.marca %></td>
+                        <td><%= aparelho.modelo %></td>
+                        <td><a href="/aparelhos/editar/<%= aparelho.id %>" class="fas fa-edit" style="color: black"
+                               ata-toggle="tooltip" title="Editar"></a></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" 
+            integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" 
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+            integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" 
+            crossorigin="anonymous">
+    </script>
+</body>
+</html>
