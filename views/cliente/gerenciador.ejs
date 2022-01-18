@@ -2,9 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+          crossorigin="anonymous">
+    <title>Editor de Clientes</title>
 </head>
 <body>
-    <h1>Cadatro de clientes ocorre aqui</h1>
+    <div class="container">
+        <%- include('../partials/navbar') %>
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Editor de Clientes</h3>
+                <form action="/cliente/salvar" method="post">
+                    <div class="form-group">
+                        <label for="nomeCompleto">Nome Completo</label>
+                        <input id="nomeCompleto" type="text" name="nomeCompleto"
+                                class="form-control" required>                        
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="cpf">CPF</label>
+                        <input id="cpf" type="text" name="cpf" 
+                                class="form-control" required="false">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="Telefone">Telefone</label>
+                        <input id="telefone" type="text" name="telefone" 
+                                class="form-control" placeholder="(XX) XXXX-XXXX">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="bairro">Bairro</label>
+                        <input id="bairro" type="text" name="bairro" 
+                                class="form-control" required="false">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="Endereco">Rua</label>
+                        <input id="rua" type="text" name="rua" 
+                                class="form-control" required="false">  
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="numero">Número Casa</label>
+                        <input id="numero" type="number" name="numero" 
+                                class="form-control" required="false">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="complemento">Complemento</label>
+                        <input id="complemento" type="text" name="complemento" 
+                                class="form-control" required="false">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="observacoes">Observações</label>
+                      <input id="observacoes" type="text" name="observacoes" 
+                            class="form-control" required="false">
+                    </div>
+                    <br>
+                    <input class="btn btn-primary" type="submit" value="Salvar">
+                    <a href="/cliente/lista" class="btn btn-warning">Lista de Clientes</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% if(mensagem) { %>
+        <div class="alert alert-info">
+            <strong>Novo Registro!</strong> <%= mensagem %>
+        </div>
+    <% } %>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" 
+            integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" 
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+            integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" 
+            crossorigin="anonymous">
+    </script>
 </body>
 </html>

@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
 })
 
 app.get('/aparelho/cadastro', function(req, res) {
-
+    
 })
 
 app.listen(3000)

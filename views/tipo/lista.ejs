@@ -5,35 +5,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
           crossorigin="anonymous">
-    <title>Aparelhos cadastrados</title>
+    <title>Lista de Tipos</title>
 </head>
 <body>
     <div class="container">
         <%- include('../partials/navbar') %>
-        <h3>Aparelhos cadastrados</h3>
-        <a href="/aparelho/cadastro" class="btn btn-primary">Novo Cadastro</a>
-        <a href="/aparelho/novaMarca" class="btn btn-primary">Adicionar Marca</a>
-        <a href="/aparelho/novoTipo" class="btn btn-primary">Adicionar Tipo</a>
-        <table class="table">    
+        <h3>Lista de Tipos</h3>
+        <a href="/tipo/cadastro" class="btn btn-primary">Novo tipo</a>
+        <table class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Modelo</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Editar</th>
                 </tr>
             </thead>
             <tbody>
-                <% aparelhos.forEach(function(aparelho) { %>
+                <%= tipos.forEach(function(tipo) { %>
                     <tr>
-                        <th><%= aparelho.id %></th>
-                        <td><%= aparelho.tipo %></td>
-                        <td><%= aparelho.marca %></td>
-                        <td><%= aparelho.modelo %></td>
-                        <td><a href="/aparelhos/editar/<%= aparelho.id %>" class="fas fa-edit" style="color: black"
-                               ata-toggle="tooltip" title="Editar"></a></td>
+                        <th><%= tipo.id %></th>
+                        <td><%= tipo.nome %></td>
+                        <td><a href="/tipo/editar/<%= tipo.id %>" class="fas fa-edit" style="color: black"
+                            ata-toggle="tooltip" title="editar"></td>
                     </tr>
-                <% }) %>
+                <%= }) %>
             </tbody>
         </table>
     </div>
