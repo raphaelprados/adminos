@@ -8,7 +8,7 @@ const Aparelhos = conexao.define('aparelhos', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement = true
+        autoIncrement: true
     },
     modelo: Sequelize.STRING
 })

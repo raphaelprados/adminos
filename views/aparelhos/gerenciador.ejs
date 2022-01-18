@@ -5,20 +5,38 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
           crossorigin="anonymous">
-    <title>Editor de Marca</title>
+    <title>Editor de Aparelho</title>
 </head>
 <body>
     <div class="container">
         <%- include('../partials/navbar') %>
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Editor de Marca</h3>
-                <form action="/marca/salvar" method="POST">
+                <h3 class="card-title">Editor de Aparelho</h3>
+                <form action="/aparelho/salvar" method="POST">
                     <div class="form-group">
-                        <label for="descricao">Descrição</label>
-                        <input id="descricao" type="text" name="descricao"
-                            placeholder="Insira o nome da marca"
-                            class="form-control" required="true">
+                        <label for="tipo">Tipo</label>
+                        <select name="tipo" id="tipo" class="form-control">
+                            <% tipos.forEach(function(tipo) { %>
+                                <option value="<%= tipo.id %"><%= tipo.nome %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="marca">Marca</label>
+                        <select name="marca" id="marca" class="form-control">
+                            <% marcas.forEach(function(marca) { %>
+                                <option value="<%= marca.id %"><%= marca.nome %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="modelo">Descrição</label>
+                        <input id="modelo" type="text" name="modelo"
+                            placeholder="Insira o modelo do aparelho"
+                            class="form-control" required>
                     </div>
                     <br>
                     <input class="btn btn-primary" type="submit" value="Salvar">

@@ -10,27 +10,32 @@
 <body>
     <div class="container">
         <%- include('../partials/navbar') %>
-        <h3>Aparelhos cadastrados</h3>
-        <a href="/aparelho/cadastro" class="btn btn-primary">Novo Cadastro</a>
-        <a href="/aparelho/novaMarca" class="btn btn-primary">Adicionar Marca</a>
-        <a href="/aparelho/novoTipo" class="btn btn-primary">Adicionar Tipo</a>
+        <h3>Clientes cadastrados</h3>
+        <a href="/cliente/cadastro" class="btn btn-primary">Novo Cadastro</a>
         <table class="table">    
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Modelo</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Rua</th>
+                    <th scope="col">Número</th>
+                    <th scope="col">Editar</th>
                 </tr>
             </thead>
             <tbody>
-                <% aparelhos.forEach(function(aparelho) { %>
+                <% clientes.forEach(function(cliente) { %>
                     <tr>
-                        <th><%= aparelho.id %></th>
-                        <td><%= aparelho.tipo %></td>
-                        <td><%= aparelho.marca %></td>
-                        <td><%= aparelho.modelo %></td>
-                        <td><a href="/aparelhos/editar/<%= aparelho.id %>" class="fas fa-edit" style="color: black"
+                        <th><%= cliente.id %></th>
+                        <td><%= cliente.nomeCompleto %></td>
+                        <td><%= cliente.cpf %></td>
+                        <td><%= cliente.telefone %></td>
+                        <td><%= cliente.cidade %></td>
+                        <td><%= cliente.rua %></td>
+                        <td><%= cliente.numero %></td>
+                        <td><a href="/cliente/editar/<%= cliente.id %>" class="fas fa-edit" style="color: black"
                                ata-toggle="tooltip" title="Editar"></a></td>
                     </tr>
                 <% }) %>
