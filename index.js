@@ -45,11 +45,11 @@ let cliente = {
 // --------------------------- Páginas de Clientes ---------------------------
 
 // Requisição do acesso à página de listagem de clientes
-app.get('/clientes/lista/:mensagem?', function(req, res) {
+app.get('/cliente/lista', function(req, res) {
     Clientes
         .findAll({ order: ["nome"] })
         .then(function(clientes) {
-            res.render("cliente/lista", {clientes: clientes })
+            res.render("clientes/lista", {clientes: clientes })
         })
 })
 
@@ -69,19 +69,32 @@ app.post("/cliente/salvar", function(req, res) {
     cliente.observacoes = req.body.observacoes
 })
 
+// --------------------------- Páginas de Aparelhos ---------------------------
+
 // Requisição de acesso à página de listagem de aparelhos
 app.get('/aparelho/lista', function(req, res) {
     Aparelhos
         .findAll({ order: ["modelo"] })
         .then(function(aparelhos) {
-            res.render("aparelhos/lista", {aparelhos: aparelhos })
+            res.render('aparelhos/lista', {aparelhos: aparelhos})
         })
 })
 
 // Renderiza a página de gerenciamento de aparelhos
 app.get('/aparelho/novo', function(req, res) {
-    res.render('aparelhos/gerenciador', {mensagem: ""})
+    let tiposAparelhos = TiposAparelhos.findAll({ order: ["nome"] })
+    Aparelhos
+        .findAll({ order: ["modelo"] })
+        .then(function(aparelhos) {
+            res.render('aparelhos/gerenciador', {aparelhos: aparelhos, tiposAparelhos: tiposAparelhos})
+        })
 })
+
+app.post("/aparelho/salvar", function(req, res) {
+    let modelo = req.body.modelo
+})
+
+// --------------------------- Páginas de Marcas ---------------------------
 
 // Requisição de acesso à página de listagem de marcas
 app.get('/marca/lista', function(req, res) {
@@ -96,6 +109,8 @@ app.get('/marca/lista', function(req, res) {
 app.get('/marca/novo', function(req, res) {
     res.render('marcas/gerenciador', {mensagem: ""})
 })
+
+// --------------------------- Páginas de Tipos ---------------------------
 
 // Requisição de acesso à página de listagem de tipos de aparelhos
 app.get('/tipo/lista', function(req, res) {

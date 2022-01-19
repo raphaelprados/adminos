@@ -2,9 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+          crossorigin="anonymous">
+    <title>Gerenciar OS</title>
 </head>
 <body>
     <h1>Cadatro de ordem de serviço ocorre aqui</h1>
+    <div class="container">
+        <%- include('../partials/navbar') %>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropwdownCliente">
+                Cliente
+            </button>
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropwdownAparelho">
+                Aparelho
+            </button>
+            <div class="dropdow-menu" aria-labelledby="dropwdownCliente">
+                <a class="dropdown-item">Cadastrado</a>
+                <a class="dropdown-item">Novo Cadastro</a>
+            </div>
+            <div class="dropdow-menu" aria-labelledby="dropwdownAparelho">
+                <a class="dropdown-item">Cadastrado</a>
+                <a class="dropdown-item">Novo Cadastro</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Editor de Ordem de Serviço</h3>
+                <form action="/ordensservico/salvar" method="POST">
+                    <div class="form-group">
+                        <label for="aparelho">Aparelho</label>
+                        <select name="aparelho" id="aparelho" class="form-control">
+                            <% aparelhos.forEach(function(aparelho) { %>
+                                <option value="<%= aparelho.id %>"><%= aparelho.modelo %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="cliente">Cliente</label>
+                        <select name="cliente" id="cliente" class="form-control">
+                            <% clientes.forEach(function(cliente) { %>
+                                <option value="<%= cliente.id %>"><%= cliente.nome %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="modelo">Descrição</label>
+                        <input id="modelo" type="text" name="modelo"
+                            placeholder="Insira o modelo do aparelho"
+                            class="form-control" required>
+                    </div>
+                    <br>
+                    <input class="btn btn-primary" type="submit" value="Salvar">
+                    <a href="/cliente/lista" class="btn btn-warning">Lista de Clientes</a>
+                    <a href="/aparelho/lista" class="btn btn-warning">Lista de Aparelhos</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" 
+            integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" 
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+            integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" 
+            crossorigin="anonymous">
+    </script>
 </body>
 </html>
